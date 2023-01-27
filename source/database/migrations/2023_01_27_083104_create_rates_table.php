@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('rates', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->onUpdate('Cascade');
+            $table->foreignId('product_id')->constrained()->onUpdate('Cascade');
+            $table->primary(['user_id', 'product_id']);
+            $table->tinyInteger('star');
+            $table->string('comment');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('rates');
     }
 };

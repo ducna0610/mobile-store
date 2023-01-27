@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+        Schema::create('bill_detail', function (Blueprint $table) {
+            $table->foreignId('type_id')->constrained();
+            $table->foreignId('bill_id')->constrained();
+            $table->primary(['bill_id', 'type_id']);
+            $table->integer('quantity');
+            $table->double('price');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('password_resets');
+        Schema::dropIfExists('bill_detail');
     }
 };
