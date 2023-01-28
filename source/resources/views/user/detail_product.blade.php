@@ -23,7 +23,7 @@
                         @if (isset($list_images) && !empty($list_images))
                             @foreach (json_decode($list_images) as $key => $img)
                                 <div class="item">
-                                    <img src="{{ asset('files/' . $img) }}"
+                                    <img src="{{ asset('storage/files/' . $img) }}"
                                         style=" height: 300px;
                                     margin: auto;">
                                 </div>
@@ -38,7 +38,7 @@
                         @if (isset($list_images) && !empty($list_images))
                             @foreach (json_decode($list_images) as $key => $img)
                                 <div class="item px-1">
-                                    <img src="{{ asset('files/' . $img) }}">
+                                    <img src="{{ asset('storage/files/' . $img) }}">
                                 </div>
                             @endforeach
                         @endif

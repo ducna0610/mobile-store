@@ -2,7 +2,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark static-top header">
     <div class="container">
         <a class="navbar-brand" href="{{ route('homes.index') }}">
-            <img src="{{ asset('user/imgs/logo.png') }}" alt="..." height="40" style="border-radius: 50%;">
+            <img src="{{ asset('user/img/logo.png') }}" alt="..." height="40" style="border-radius: 50%;">
         </a>
 
         <form class="d-flex">
