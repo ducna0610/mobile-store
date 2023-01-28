@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Product;
@@ -20,7 +21,7 @@ class ImageController extends Controller
         if ($request->hasfile('image_names')) {
             foreach ($request->file('image_names') as $image) {
                 $name = time() . rand(1, 100) . '.' . $image->extension();
-                $image->move(public_path('files'), $name);
+                $image->move(storage_path('app/public/files'), $name);
                 $images[] = $name;
             }
         }
@@ -45,7 +46,7 @@ class ImageController extends Controller
         if ($request->hasfile('image_names')) {
             foreach ($request->file('image_names') as $image) {
                 $name = time() . rand(1, 100) . '.' . $image->extension();
-                $image->move(public_path('files'), $name);
+                $image->move(storage_path('app/public/files'), $name);
                 $images[] = $name;
             }
         }
@@ -61,7 +62,7 @@ class ImageController extends Controller
         $image->image_names = $images;
         if ($image->update()) {
             foreach ($images_remove as $image_name) {
-                File2::delete(public_path("files/" . $image_name));
+                File2::delete(storage_path("app/public/files/" . $image_name));
             }
         }
 
