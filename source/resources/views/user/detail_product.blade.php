@@ -57,9 +57,9 @@
                             <br>
                             Chip: {{ $type->chip }}
                             <br>
-                            Đã bán: {{ $type->sold }} sản phẩm
+                            Đã bán: {{ $product->types_sum_sold }} sản phẩm
                             <br>
-                            Đánh giá: {{ $type->sold }} sao
+                            Đánh giá: {{ number_format($product->rates_avg_star, 2) }} sao
                         </p>
                         <form action="{{ route('carts.addToCart', $product->id) }}" id="form-add-to-card">
                             @csrf

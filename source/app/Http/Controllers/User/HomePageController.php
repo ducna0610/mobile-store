@@ -7,6 +7,7 @@ use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use DB;
 
 class HomePageController extends Controller
 {
@@ -76,6 +77,14 @@ class HomePageController extends Controller
 
     public function detailProduct(Product $product)
     {
+        $product = $product
+            ->where('id', '=', $product->id)
+            ->withSum('types', 'sold')
+            ->addSelect(DB::raw('
+                    IFNULL((SELECT AVG(star) FROM rates WHERE rates.product_id = products.id), 5)
+                    AS rates_avg_star'))
+            ->first();
+
         if ($product->active) {
             return view('user.detail_product', [
                 'product' => $product,
