@@ -39,6 +39,19 @@ class ManufacturerController extends Controller
         ]);
     }
 
+    public function detail(Manufacturer $manufacturer)
+    {
+        $manufacturer = $manufacturer
+            ->where('id', '=', $manufacturer->id)
+            ->withCount('products')
+            ->first();
+
+        return view('admin.manufacturer.detail', [
+            'title' => 'Chi tiết nhà sản xuất',
+            'manufacturer' => $manufacturer,
+        ]);
+    }
+
     public function create()
     {
         $title = 'Thêm nhà sản xuất';

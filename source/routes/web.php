@@ -17,6 +17,11 @@ use App\Http\Middleware\CheckUserLogin;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
+
+Route::get('/test', function () {
+    return 1;
+});
+
 // -- USER --
 Route::group(
     [
@@ -145,9 +150,7 @@ Route::group(
             ],
             function () {
                 Route::get('/', 'index')->name('index');
-                Route::get('/index-api', function () {
-                    return view('admin.manufacturer.index_api');
-                });
+                Route::get('/detail-manufacturer/{manufacturer}', 'detail')->name('detail');
                 Route::get('/create', 'create')->name('create');
                 Route::post('/create', 'store')->name('store');
                 Route::get('/{manufacturer}/edit', 'edit')->name('edit');

@@ -89,8 +89,8 @@
                                         <td width="14%">{{ $item->address }}</td>
                                         <td width="20%" class="text-center">100</td>
                                         <td width="1%" class="td-actions text-center col-xs-3">
-                                            <a href="" rel="tooltip" title="Chi tiết"
-                                                class="btn-lg col-md-4 col-xs-12">
+                                            <a href="{{ route('admins.manufacturers.detail', $item->id) }}" rel="tooltip"
+                                                title="Chi tiết" class="btn-lg col-md-4 col-xs-12">
                                                 <i class="ti-info-alt"></i>
                                             </a>
                                             <a href="{{ route('admins.manufacturers.edit', $item->id) }}" rel="tooltip"
