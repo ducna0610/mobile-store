@@ -19,7 +19,11 @@ use Laravel\Socialite\Facades\Socialite;
 
 
 Route::get('/test', function () {
-    return 1;
+    if (isSupperAdmin()) {
+        return 1;
+    } else {
+        return 2;
+    }
 });
 
 // -- USER --
