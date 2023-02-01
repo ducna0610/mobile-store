@@ -115,4 +115,46 @@ class ChartController extends Controller
             'arr2' => json_encode(array_values($arr2)),
         ]);
     }
+
+    public function warehouse()
+    {
+        $products = DB::table('products')
+            ->addSelect(['products.id', 'products.name', 'products.manufacturer_id'])
+            ->addSelect(DB::raw('SUM(types.quantity) AS total_quantity'))
+            ->leftJoin('types', 'types.product_id', '=', 'products.id')
+            ->groupBy('products.id')
+            ->get();
+
+        $manufacturers = DB::table('manufacturers')
+            ->addSelect(['manufacturers.name', 'manufacturers.id'])
+            ->get();
+
+        $arr1 = [];
+        foreach ($manufacturers as $manufacturer) {
+            $arr1[$manufacturer->id] = [
+                'name' => $manufacturer->name,
+                'y' => 0,
+                'drilldown' => $manufacturer->id
+            ];
+        }
+
+        $arr2 = [];
+        foreach ($products as $product) {
+            if (empty($arr2[$product->manufacturer_id])) {
+                $arr2[$product->manufacturer_id] = [
+                    'name' => $arr1[$product->manufacturer_id]['name'],
+                    'id' => $product->manufacturer_id,
+                ];
+            }
+            $arr2[$product->manufacturer_id]['data'][] = [$product->name, (int)$product->total_quantity];
+
+            $arr1[$product->manufacturer_id]['y'] += $product->total_quantity;
+        }
+
+        return view('admin.chart.warehouse', [
+            'title' => 'Sản phẩm',
+            'arr1' => json_encode(array_values($arr1)),
+            'arr2' => json_encode(array_values($arr2)),
+        ]);
+    }
 }

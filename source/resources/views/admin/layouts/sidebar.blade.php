@@ -80,6 +80,12 @@
                                 <span class="sidebar-normal">Sản phẩm</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admins.charts.warehouse') }}">
+                                <span class="sidebar-mini">TK</span>
+                                <span class="sidebar-normal">Tồn kho</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
