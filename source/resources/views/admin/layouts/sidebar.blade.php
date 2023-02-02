@@ -109,14 +109,14 @@
                     <p>Đơn hàng</p>
                 </a>
             </li>
-
-            <li>
-                <a href="{{ route('admins.orders.index') }}">
-                    <i class="ti-user" aria-hidden="true"></i>
-                    <p>Khách hàng</p>
-                </a>
-            </li>
-
+            @if (isSupperAdmin())
+                <li>
+                    <a href="{{ route('admins.users.index') }}">
+                        <i class="ti-user" aria-hidden="true"></i>
+                        <p>Khách hàng</p>
+                    </a>
+                </li>
+            @endif
         </ul>
     </div>
 </div>

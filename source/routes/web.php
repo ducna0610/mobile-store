@@ -8,11 +8,13 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\Admin\ImageController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\User\BillController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\HomePageController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Middleware\CheckAdminLoginMiddleware;
+use App\Http\Middleware\CheckSupperAdminMiddleware;
 use App\Http\Middleware\CheckUserLogin;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -231,6 +233,25 @@ Route::group(
                 Route::get('/revenue', 'revenue')->name('revenue');
                 Route::get('/products', 'products')->name('products');
                 Route::get('/warehouse', 'warehouse')->name('warehouse');
+            }
+        );
+
+        // Supper Admin
+        Route::group(
+            [
+                'middleware' => CheckSupperAdminMiddleware::class,
+            ],
+            function () {
+                Route::group(
+                    [
+                        'prefix' => 'users',
+                        'as' => 'users.',
+                        'controller' => AdminUserController::class,
+                    ],
+                    function () {
+                        Route::get('/', 'index')->name('index');
+                    }
+                );
             }
         );
     }
