@@ -16,7 +16,8 @@
             <form class="navbar-form navbar-left navbar-search-form" role="search">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" value="" class="form-control" placeholder="Search...">
+                    <input type="text" value="{{ request()->get('keywords') }}" class="form-control"
+                        placeholder="Search..." name="keywords">
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">

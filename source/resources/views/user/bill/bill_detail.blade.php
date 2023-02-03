@@ -114,6 +114,9 @@
                             <div class="text">
                                 <div class="note_title">Địa chỉ:</div>
                                 {{ $bill['address_receiver'] }}
+
+                                <div class="note_title">Số điện thoại:</div>
+                                {{ $bill['phone_receiver'] }}
                             </div>
                         </div>
                         <div class="cart_buttons">
