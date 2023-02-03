@@ -24,21 +24,22 @@
                                                 <div class="thumb-content">
                                                     <div class="star-rating">
                                                         <ul class="list-inline">
-                                                            @for ($j = 1; $j <= 5; $j++)
-                                                                @if ($j <= $item->star)
+                                                            @for ($i = 1; $i <= 5; $i++)
+                                                                @if ($i <= $item->star)
                                                                     <li class="list-inline-item"><i class="fa fa-star"></i>
                                                                     </li>
                                                                 @else
                                                                     <li class="list-inline-item"><i
-                                                                            class="fa fa-star-o"></i>
-                                                                    </li>
+                                                                            class="fa fa-star-o"></i></li>
                                                                 @endif
                                                             @endfor
                                                         </ul>
                                                     </div>
                                                     <p class="item-price">
-                                                        <b>{{ $item->price }}</b>
+                                                        <b style="color: red;">{{ number_format($item->price) }}đ</b>
                                                         ({{ $item->specifications }} cấu hình)
+                                                        <br>
+                                                        ({{ $item->rates . ' đánh giá / đã bán ' . $item->total_sold }})
                                                     </p>
                                                     <a href="{{ route('homes.detailProduct', $item->id) }}"
                                                         class="btn">Chi tiết</a>
@@ -205,7 +206,7 @@
             text-align: center;
             text-transform: uppercase;
             position: relative;
-            margin: 30px 0 60px;
+            margin: 40px 0 30px;
         }
 
         .carousel {

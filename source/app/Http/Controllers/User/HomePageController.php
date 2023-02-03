@@ -31,8 +31,6 @@ class HomePageController extends Controller
             $arr_price = explode('-', request()->get('price'));
         }
 
-        $hot_products = $this->product->limit(4)->get();
-
         $q = request()->get('q') ?? '';
 
         if (request()->get('manufacturer_id') != "Tất cả") {
@@ -58,6 +56,25 @@ class HomePageController extends Controller
             }
         }
 
+        $hot_products = $this->product
+            ->addSelect('products.*')
+            ->addSelect(DB::raw('MIN(types.price) AS price'))
+            ->addSelect(DB::raw('SUM(types.sold) AS total_sold'))
+            ->addSelect(DB::raw('IFNULL(AVG(rates.star), 5) AS star'))
+            ->addSelect(DB::raw('COUNT(distinct types.id) AS specifications'))
+            ->addSelect(DB::raw('
+                    (SELECT COUNT(*) FROM rates WHERE rates.product_id = products.id)
+                    AS rates'))
+            ->where('active', '=', 1)
+            ->join('types', 'types.product_id', 'products.id')
+            ->leftJoin('rates', 'rates.product_id', '=', 'products.id')
+            ->orderBy('total_sold', 'DESC')
+            ->groupBy('products.id')
+            ->limit(4)
+            ->get();
+
+        // return $products;
+        // return $hot_products;
         return view('user.index', [
             'manufacturers' => $manufacturers,
             'products' => $products,

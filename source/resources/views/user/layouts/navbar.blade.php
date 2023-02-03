@@ -5,7 +5,7 @@
             <img src="{{ asset('user/img/logo.png') }}" alt="..." height="40" style="border-radius: 50%;">
         </a>
 
-        <form class="d-flex">
+        <form class="d-flex" style="width: 200px;">
             <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search"
                 value="{{ request()->get('q') }}">
             <button class="btn btn-success" type="submit">
