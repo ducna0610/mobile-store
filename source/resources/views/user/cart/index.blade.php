@@ -20,8 +20,8 @@
                                                 <div class="row">
                                                     <div class="cart_item_image my-3 col-md-2 col-xs-12">
                                                         <a href="{{ route('homes.detailProduct', $item['product_id']) }}">
-                                                            <img src="{{ asset('storage/' . $item['image']) }}"
-                                                                style="max-width: 120px;" alt="img">
+                                                            <img src="{{ asset($item['image']) }}" style="max-width: 120px;"
+                                                                alt="img">
                                                         </a>
                                                     </div>
                                                     <div class="col-md-3 col-xs-12">

@@ -16,14 +16,14 @@
                 <div class="col-md-6" style="margin-bottom: 20px;">
                     <div id="slider" class="owl-carousel product-slider">
                         <div class="item">
-                            <img src="{{ asset('storage/' . $product->image) }}"
+                            <img src="{{ asset($product->image) }}"
                                 style="width: 300px;
                             margin: auto;" />
                         </div>
                         @if (isset($list_images) && !empty($list_images))
                             @foreach (json_decode($list_images) as $key => $img)
                                 <div class="item">
-                                    <img src="{{ asset('storage/files/' . $img) }}"
+                                    <img src="{{ asset('images/' . $img) }}"
                                         style=" height: 300px;
                                     margin: auto;">
                                 </div>
@@ -33,12 +33,12 @@
                     <br>
                     <div id="thumb" class="owl-carousel product-thumb">
                         <div class="item">
-                            <img src="{{ asset('storage/' . $product->image) }}">
+                            <img src="{{ asset($product->image) }}">
                         </div>
                         @if (isset($list_images) && !empty($list_images))
                             @foreach (json_decode($list_images) as $key => $img)
                                 <div class="item px-1">
-                                    <img src="{{ asset('storage/files/' . $img) }}">
+                                    <img src="{{ asset('images/' . $img) }}">
                                 </div>
                             @endforeach
                         @endif

@@ -69,8 +69,6 @@ class ProductController extends Controller
                     }
                 );
             });
-
-            // $data->where('name', 'like', '%' . request('keywords') . '%');
         };
 
         $id_manufacturers = $this->manufacturer->pluck('id')->toArray();
@@ -102,7 +100,7 @@ class ProductController extends Controller
             $image = Image::query()->select('image_names')->where('id', $image_id)->first();
         } else $list_images = 0;
 
-        return view('admin.product.detail', [
+        return view('admin.product.detail_product', [
             'title' => $title,
             'product' => $product,
             'image_id' => $image_id,

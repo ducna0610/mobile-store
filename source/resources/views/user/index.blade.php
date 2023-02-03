@@ -16,7 +16,7 @@
                                             <div class="thumb-wrapper" style="height: 400px;">
                                                 <a href="{{ route('homes.detailProduct', $item->id) }}">
                                                     <div class="img-box">
-                                                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid"
+                                                        <img src="{{ asset($item->image) }}" class="img-fluid"
                                                             alt="">
                                                     </div>
                                                     <h4>{{ $item->name }}</h4>
@@ -128,7 +128,7 @@
                 <div class="companyMenu group flexContain">
                     @foreach ($manufacturers as $manufacturer)
                         <a href="?manufacturer_id={{ $manufacturer->id }}">
-                            <img src="{{ asset('storage/' . $manufacturer->logo) }}">
+                            <img src="{{ asset($manufacturer->logo) }}">
                         </a>
                     @endforeach
                 </div>
@@ -151,7 +151,7 @@
                                             <div class="thumb-wrapper" style="height: 400px;">
                                                 <a href="{{ route('homes.detailProduct', $item->id) }}">
                                                     <div class="img-box">
-                                                        <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid"
+                                                        <img src="{{ asset($item->image) }}" class="img-fluid"
                                                             alt="">
                                                     </div>
                                                     <h4>{{ $item->name }}</h4>

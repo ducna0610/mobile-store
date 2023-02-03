@@ -34,7 +34,7 @@
                         <button id="addImage" type="button">Upload image</button>
                         <div class="preview"></div>Hoặc lại giữ ảnh cũ:
                         <br>
-                        <img src="{{ asset('storage/' . $manufacturer->logo) }}" width="200px">
+                        <img src="{{ asset($manufacturer->logo) }}" width="200px">
                         <input type="hidden" name="old_logo" value="{{ $manufacturer->logo }}" />
                         @error('logo')
                             <span style='color: red;'>

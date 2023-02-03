@@ -86,7 +86,7 @@
                                         {{-- 800 x 500 --}}
                                         <td width="15%">
                                             <a href="{{ route('admins.products.detail', $item->id) }}">
-                                                <img src="{{ asset('storage/' . $item->image) }}" rel="tooltip"
+                                                <img src="{{ asset($item->image) }}" rel="tooltip"
                                                     title="{{ $item->name }}">
                                             </a>
                                         </td>

@@ -35,7 +35,7 @@
                         <div class="preview"></div>
                         Hoặc lại giữ ảnh cũ:
                         <br>
-                        <img src="{{ asset('storage/' . $product->image) }}" width="100px">
+                        <img src="{{ asset($product->image) }}" width="100px">
                         <input type="hidden" name="old_image" value="{{ $product->image }}" />
                         @error('new_image')
                             <span style='color: red;'>

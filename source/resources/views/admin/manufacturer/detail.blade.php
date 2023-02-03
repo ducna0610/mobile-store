@@ -24,7 +24,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{ asset('storage/' . $manufacturer->logo) }}">
+                            <img src="{{ asset($manufacturer->logo) }}">
                             <br>
                             <div>
                                 Số sản phẩm: {{ $manufacturer->products_count }}

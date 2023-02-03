@@ -51,8 +51,7 @@
                                 <td width="20%">{{ $product->name }}</td>
                                 {{-- 600 x 600 --}}
                                 <td width="15%">
-                                    <img src="{{ asset('storage/' . $product->image) }}" rel="tooltip"
-                                        title="{{ $product->name }}">
+                                    <img src="{{ asset($product->image) }}" rel="tooltip" title="{{ $product->name }}">
                                 </td>
                                 <td width="20%">{{ $product->manufacturer->name }}</td>
                                 <td width="30%">{{ $product->description }}</td>
@@ -289,7 +288,7 @@
                             <div class="box-image">
                                 <input type="hidden" name="images_uploaded[]" value="{{ $img }}"
                                     id="img-{{ $key }}">
-                                <img src="{{ asset('storage/files/' . $img) }}" class="picture-box">
+                                <img src="{{ asset('images/' . $img) }}" class="picture-box">
                                 <div class="wrap-btn-delete"><span data-id="img-{{ $key }}"
                                         class="btn-delete-image">x</span></div>
                             </div>

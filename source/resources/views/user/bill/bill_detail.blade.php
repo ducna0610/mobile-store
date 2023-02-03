@@ -15,7 +15,7 @@
                                         <div class="row">
                                             <div class="cart_item_image my-3 col-md-2 col-xs-12">
                                                 <a href="{{ route('homes.detailProduct', $item['type_id']->product->id) }}">
-                                                    <img src="{{ asset('storage/' . $item['type_id']->product->image) }}"
+                                                    <img src="{{ asset($item['type_id']->product->image) }}"
                                                         style="max-width: 120px;" alt="img">
                                                 </a>
                                             </div>

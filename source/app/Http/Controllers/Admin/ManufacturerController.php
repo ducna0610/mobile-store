@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Manufacturer\StoreManufacturerRequest;
 use App\Http\Requests\Manufacturer\UpdateManufacturerRequest;
 use App\Models\Manufacturer;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ManufacturerController extends Controller
 {
@@ -63,8 +62,9 @@ class ManufacturerController extends Controller
 
     public function store(StoreManufacturerRequest $request)
     {
-        // path: path: images/<manufacturer name>/logo.png
-        $path = Storage::disk('public')->putFileAs('images/' . $request->name, $request->file('logo'), $this->LOGO_NAME);
+        // path: images/<manufacturer name>/logo.png
+        $path = 'images/' . $request->name . '/' . $this->LOGO_NAME;
+        $request->file('logo')->move(public_path('images/' . $request->name), $this->LOGO_NAME);
 
         $data = $request->validated();
         $data['logo'] = $path;
@@ -98,14 +98,18 @@ class ManufacturerController extends Controller
         if ($old_dir != $request->name) {
             $old_path = 'images/' . $old_dir;
             $new_path = 'images/' . $request->name;
-            Storage::disk('public')->move($old_path, $new_path);
-            Storage::disk('public')->deleteDirectory($old_path);
 
-            $path = $new_path . $this->LOGO_NAME;
+            File::move(
+                $old_path, // old file
+                $new_path // new file
+            );
+
+            $path = $new_path . '/' . $this->LOGO_NAME;
         }
 
         if (!empty($request->file('new_logo'))) {
-            $path = Storage::disk('public')->putFileAs('images/' . $request->name, $request->file('new_logo'), $this->LOGO_NAME);
+            $path = 'images/' . $request->name . '/' . $this->LOGO_NAME;
+            $request->file('new_logo')->move(public_path('images/' . $request->name), $this->LOGO_NAME);
         }
 
         $data = $request->validated();
@@ -120,7 +124,7 @@ class ManufacturerController extends Controller
     public function destroy(Manufacturer $manufacturer)
     {
         // remove dir old logo 
-        Storage::disk('public')->deleteDirectory('images/' . $manufacturer->name);
+        File::deleteDirectory(public_path("images/" . $manufacturer->name));
 
         $manufacturer->delete();
 

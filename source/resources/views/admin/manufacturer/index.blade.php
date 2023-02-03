@@ -74,7 +74,7 @@
                                         <td width="5%">{{ $item->id }}</td>
                                         <td width="15%">{{ $item->name }}</td>
                                         {{-- 800 x 500 --}}
-                                        <td width="10%"><img src="{{ asset('storage/' . $item->logo) }}" rel="tooltip"
+                                        <td width="10%"><img src="{{ asset($item->logo) }}" rel="tooltip"
                                                 title="{{ $item->name }}"></td>
                                         <td width="15%">
                                             <a href="tel:{{ $item->phone }}">
