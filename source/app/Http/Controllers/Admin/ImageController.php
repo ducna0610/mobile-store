@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Product;
-use Illuminate\Support\Facades\File as File2;
+use Illuminate\Support\Facades\File;
+
 
 class ImageController extends Controller
 {
@@ -15,13 +16,18 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store_image_product(Request $request, Product $product)
+    public function store(Request $request, Product $product)
     {
+        $this->validate($request, [
+            'image_names' => 'required',
+            'image_names.*' => 'required'
+        ]);
+
         $images = [];
         if ($request->hasfile('image_names')) {
             foreach ($request->file('image_names') as $image) {
                 $name = time() . rand(1, 100) . '.' . $image->extension();
-                $image->move(storage_path('app/public/files'), $name);
+                $image->move(public_path('images'), $name);
                 $images[] = $name;
             }
         }
@@ -46,7 +52,7 @@ class ImageController extends Controller
         if ($request->hasfile('image_names')) {
             foreach ($request->file('image_names') as $image) {
                 $name = time() . rand(1, 100) . '.' . $image->extension();
-                $image->move(storage_path('app/public/files'), $name);
+                $image->move(public_path('images'), $name);
                 $images[] = $name;
             }
         }
@@ -62,7 +68,7 @@ class ImageController extends Controller
         $image->image_names = $images;
         if ($image->update()) {
             foreach ($images_remove as $image_name) {
-                File2::delete(storage_path("app/public/files/" . $image_name));
+                File::delete(public_path("images" . $image_name));
             }
         }
 

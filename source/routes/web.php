@@ -188,7 +188,7 @@ Route::group(
                         'controller' => ImageController::class,
                     ],
                     function () {
-                        Route::post('/create/{product}', 'store_image_product')->name('store');
+                        Route::post('/create/{product}', 'store')->name('store');
                         Route::put('/{product}', 'update')->name('update');
                         Route::delete('/{product}', 'destroy')->name('destroy');
                     }
