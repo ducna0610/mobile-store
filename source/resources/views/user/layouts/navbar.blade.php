@@ -131,13 +131,13 @@
                         <div class="container">
                             Đăng nhập bằng:
                             <div class="mb-6 row">
-                                <a href="{{ route('auth.redirect', 'github') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'github') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-github fa-2x" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-google fa-2x" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -260,13 +260,13 @@
                         <div class="container">
                             Liên kết tài khoản với:
                             <div class="mb-6 row">
-                                <a href="{{ route('auth.redirect', 'github') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'github') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-github fa-2x" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-google fa-2x" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-2 col-1">
+                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
                                 </a>
                             </div>
