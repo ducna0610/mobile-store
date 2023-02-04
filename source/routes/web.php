@@ -233,6 +233,7 @@ Route::group(
                 Route::get('/revenue', 'revenue')->name('revenue');
                 Route::get('/products', 'products')->name('products');
                 Route::get('/warehouse', 'warehouse')->name('warehouse');
+                Route::get('/top-user', 'topUser')->name('top_user');
             }
         );
 

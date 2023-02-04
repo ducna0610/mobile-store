@@ -86,6 +86,12 @@
                                 <span class="sidebar-normal">Tồn kho</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admins.charts.top_user') }}">
+                                <span class="sidebar-mini">KH</span>
+                                <span class="sidebar-normal">Top khách hàng</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

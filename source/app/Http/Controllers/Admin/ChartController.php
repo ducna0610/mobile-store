@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use DB;
@@ -155,6 +156,26 @@ class ChartController extends Controller
             'title' => 'Sản phẩm',
             'arr1' => json_encode(array_values($arr1)),
             'arr2' => json_encode(array_values($arr2)),
+        ]);
+    }
+
+    public function topUser()
+    {
+        $arr = (new User())
+            ->addSelect('users.name')
+            ->withSum('bills', 'total_price')
+            ->orderBy('bills_sum_total_price', 'DESC')
+            ->limit(5)
+            ->get()->map(function ($user) {
+                return [
+                    'name' => $user->name,
+                    'y' => $user->bills_sum_total_price
+                ];
+            });
+
+        return view('admin.chart.top_user', [
+            'title' => 'Khách hàng tiềm năng',
+            'arr' => $arr
         ]);
     }
 }
