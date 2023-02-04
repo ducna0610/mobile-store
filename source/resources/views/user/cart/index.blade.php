@@ -121,11 +121,11 @@
                                 </div>
                             </div>
                             <div class="cart_buttons">
-                                <button type="button" class="cart_button_clear"
+                                <button type="button" class="cart_button_clear m-4"
                                     onclick=window.location="{{ route('homes.index') }}">
                                     Tiếp tục mua sắm
                                 </button>
-                                <button type="button" class="button cart_button_checkout"
+                                <button type="button" class="button cart_button_checkout m-4"
                                     onclick=window.location="{{ route('carts.order') }}">
                                     Đặt hàng
                                 </button>

@@ -13,7 +13,7 @@
                                 <div class="row">
                                     @foreach ($hot_products as $item)
                                         <div class="col-sm-6 col-lg-3 mb-4 product">
-                                            <div class="thumb-wrapper" style="height: 400px;">
+                                            <div class="thumb-wrapper">
                                                 <a href="{{ route('homes.detailProduct', $item->id) }}">
                                                     <div class="img-box">
                                                         <img src="{{ asset($item->image) }}" class="img-fluid"
@@ -148,7 +148,7 @@
                                 <div class="row">
                                     @foreach ($products as $item)
                                         <div class="col-sm-4 col-6 col-md-3 mb-4 product">
-                                            <div class="thumb-wrapper" style="height: 400px;">
+                                            <div class="thumb-wrapper">
                                                 <a href="{{ route('homes.detailProduct', $item->id) }}">
                                                     <div class="img-box">
                                                         <img src="{{ asset($item->image) }}" class="img-fluid"
@@ -378,6 +378,35 @@
 
         a {
             text-decoration: none;
+        }
+
+        .product .thumb-wrapper {
+            height: 400px;
+        }
+
+        /* Mobile */
+        @media (max-width: 739px) {
+            .product {
+                width: 800px;
+            }
+
+            .companyMenu {
+                margin: 10px;
+            }
+
+            .companyMenu a {
+                border: none;
+                transition-duration: .2s;
+            }
+
+            .companyMenu a:hover {
+                transform: scale(1.1);
+                z-index: 20;
+            }
+
+            .companyMenu a img {
+                width: 120px;
+            }
         }
     </style>
 @endpush
