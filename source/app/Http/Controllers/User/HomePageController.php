@@ -33,6 +33,7 @@ class HomePageController extends Controller
 
         $q = request()->get('q') ?? '';
 
+        $manufacturer_id = null;
         if (request()->get('manufacturer_id') != "Tất cả") {
             $manufacturer_id = request()->get('manufacturer_id');
         }
