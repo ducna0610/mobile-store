@@ -59,7 +59,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-2">
+            <div class="col-12 col-md-2 form-filter">
                 <br>
                 <form>
                     <div>
@@ -406,6 +406,13 @@
 
             .companyMenu a img {
                 width: 120px;
+            }
+        }
+
+        /* Tablet PC*/
+        @media (min-width: 740px) {
+            .form-filter {
+                padding-left: 40px;
             }
         }
     </style>
