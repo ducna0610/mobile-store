@@ -4,24 +4,32 @@
         Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
     -->
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-            AD
+        <a href="{{ route('admins.index') }}" class="simple-text logo-mini">
+            @if (isSupperAdmin())
+                SAD
+            @else
+                AD
+            @endif
         </a>
 
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-            ADMIN
+        <a href="{{ route('admins.index') }}" class="simple-text logo-normal">
+            @if (isSupperAdmin())
+                SUPER ADMIN
+            @else
+                ADMIN
+            @endif
         </a>
     </div>
 
     <div class="sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="{{ asset('admin/img/faces/face-2.jpg') }}" />
+                <img src="{{ asset('admin/img/logo.png') }}" />
             </div>
             <div class="info">
                 <a data-toggle="collapse" href="#collapseExample" class="collapsed">
                     <span>
-                        Chet Faker
+                        {{ Auth::guard('admin')->user()->name }}
                         <b class="caret"></b>
                     </span>
                 </a>
@@ -30,15 +38,9 @@
                 <div class="collapse" id="collapseExample">
                     <ul class="nav">
                         <li>
-                            <a href="#profile">
+                            <a href="{{ route('admins.showProfile') }}">
                                 <span class="sidebar-mini">Mp</span>
                                 <span class="sidebar-normal">My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#edit">
-                                <span class="sidebar-mini">Ep</span>
-                                <span class="sidebar-normal">Edit Profile</span>
                             </a>
                         </li>
                         <li>

@@ -148,6 +148,9 @@ Route::group(
         Route::get('/', 'index')->name('index');
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
+        Route::get('/profile', 'showProfile')->name('showProfile');
+        Route::post('/profile', 'editProfile')->name('editProfile');
+
         Route::group(
             [
                 'prefix' => 'manufacturers',
