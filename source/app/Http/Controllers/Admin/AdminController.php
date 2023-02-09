@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\AdminRoleEnum;
+use App\Enums\StatusOrderEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
-use App\Models\Manufacturer;
-use App\Models\Product;
-use App\Models\Type;
+use App\Models\Bill;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\View;
+use DB;
 
 class AdminController extends Controller
 {
@@ -20,21 +20,35 @@ class AdminController extends Controller
         // -- CHUAN --
         $this->model = Admin::query();
         $this->table = (new Admin())->getTable();
-
-        // share mọi view
-        // $arrAdminRole = AdminRoleEnum::getArrayView();
-        // View::share('arrAdminRole', $arrAdminRole);
-
-        // View::share('title', ucwords($this->title));
     }
 
     public function index()
     {
-        $title = 'Admin';
+        // DB::enableQueryLog();
+        $title = 'Trang chủ';
 
-        $roles = AdminRoleEnum::asArray();
+        $num_orders = (new Bill())
+            ->where('status', '=', StatusOrderEnum::SPENDING)
+            ->count();
 
-        return view('admin.index', compact('title'));
+        $num_products = DB::table('bill_detail')
+            ->whereDate('created_at', Carbon::today())
+            ->addSelect(DB::raw('SUM(quantity) AS num_products'))
+            ->first()->num_products;
+
+        $num_users = (new User())
+            ->whereDate('created_at', Carbon::today())
+            // ->whereRaw('Date(created_at) = CURDATE()')
+            ->count();
+
+        // dd(DB::getQueryLog());
+
+        return view('admin.index', [
+            'title' => $title,
+            'num_orders' => $num_orders,
+            'num_products' => $num_products,
+            'num_users' => $num_users,
+        ]);
     }
 
 
