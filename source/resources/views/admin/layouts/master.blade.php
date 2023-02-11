@@ -68,17 +68,8 @@
     <!--  Switch and Tags Input Plugins -->
     <script src="{{ asset('admin/js/bootstrap-switch-tags.js') }}"></script>
 
-    <!-- Circle Percentage-chart -->
-    <script src="{{ asset('admin/js/jquery.easypiechart.min.js') }}"></script>
-
-    <!--  Charts Plugin -->
-    <script src="{{ asset('admin/js/chartist.min.js') }}"></script>
-
     <!-- Sweet Alert 2 plugin -->
     <script src="{{ asset('admin/js/sweetalert2.js') }}"></script>
-
-    <!-- Wizard Plugin    -->
-    <script src="{{ asset('admin/js/jquery.bootstrap.wizard.min.js') }}"></script>
 
     <!-- Paper Dashboard PRO Core javascript and methods for Demo purpose -->
     <script src="{{ asset('admin/js/paper-dashboard.js') }}"></script>
