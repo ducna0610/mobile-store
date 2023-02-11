@@ -133,7 +133,7 @@
     <script src="{{ asset('user/js/moment.min.js') }}"></script>
     <script>
         var dpBelow = TinyDatePicker('#date', {
-            mode: 'dp-below',
+            mode: 'dp-modal',
             lang: {
                 days: ['Chủ nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
                 months: [
