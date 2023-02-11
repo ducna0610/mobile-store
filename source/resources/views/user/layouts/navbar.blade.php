@@ -137,9 +137,6 @@
                                 <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-google fa-2x" aria-hidden="true"></i>
                                 </a>
-                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-4 col-1">
-                                    <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
-                                </a>
                             </div>
                         </div>
 
@@ -265,9 +262,6 @@
                                 </a>
                                 <a href="{{ route('auth.redirect', 'google') }}" class="link-secondary p-4 col-1">
                                     <i class="fa fa-google fa-2x" aria-hidden="true"></i>
-                                </a>
-                                <a href="{{ route('auth.redirect', 'facebook') }}" class="link-secondary p-4 col-1">
-                                    <i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
