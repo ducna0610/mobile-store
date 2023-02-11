@@ -18,13 +18,12 @@ return new class extends Migration
             $table->integer('ram');
             $table->integer('disk');
             $table->integer('pin');
-            $table->string('chip');
+            $table->string('chip', 50);
             $table->double('price');
             $table->string('color', 50);
             $table->integer('quantity')->default(0);
             $table->integer('sold')->default(0);
             $table->foreignId('product_id')->constrained();
-            $table->softDeletes();
             $table->timestamps();
         });
     }

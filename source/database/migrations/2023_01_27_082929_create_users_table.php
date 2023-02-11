@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('remember_token')->nullable();
             $table->tinyInteger('provider')->nullable()->comment('ProviderEnum');
-            $table->softDeletes();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

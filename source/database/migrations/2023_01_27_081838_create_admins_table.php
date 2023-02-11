@@ -16,9 +16,9 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->string('email');
             $table->text('password');
-            $table->string('name')->nullable();
             $table->boolean('gender')->nullable();
             $table->string('phone', 10)->nullable();
             $table->string('address')->nullable();
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->tinyInteger('role')->default(AdminRoleEnum::ADMIN)->comment('AdminRoleEnum');
             $table->string('avatar')->nullable();
             $table->string('remember_token')->nullable();
-            $table->softDeletes()->nullable();
             $table->timestamps();
         });
     }

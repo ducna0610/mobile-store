@@ -16,13 +16,13 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->string('name_receiver');
             $table->string('phone_receiver');
             $table->string('address_receiver');
             $table->double('total_price');
             $table->string('note')->nullable();
             $table->tinyInteger('status')->default(StatusOrderEnum::SPENDING)->comment('StatusOrderEnum');
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

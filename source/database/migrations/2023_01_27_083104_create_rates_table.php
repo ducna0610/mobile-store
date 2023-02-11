@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rates', function (Blueprint $table) {
-            $table->foreignId('user_id')->constrained()->onUpdate('Cascade');
-            $table->foreignId('product_id')->constrained()->onUpdate('Cascade');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('product_id')->constrained();
             $table->primary(['user_id', 'product_id']);
             $table->tinyInteger('star');
             $table->string('comment');
