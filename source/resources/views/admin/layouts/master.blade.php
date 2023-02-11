@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+
     <title>{{ $title }} - {{ config('app.name') }}</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
