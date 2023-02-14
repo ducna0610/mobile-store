@@ -256,6 +256,17 @@ Route::group(
                         Route::get('/', 'index')->name('index');
                     }
                 );
+
+                Route::group(
+                    [
+                        'prefix' => 'order',
+                        'as' => 'orders.',
+                        'controller' => OrderController::class,
+                    ],
+                    function () {
+                        Route::get('/history', 'history')->name('history');
+                    }
+                );
             }
         );
     }

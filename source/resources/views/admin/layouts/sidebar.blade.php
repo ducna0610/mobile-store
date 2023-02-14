@@ -119,6 +119,12 @@
             </li>
             @if (isSupperAdmin())
                 <li>
+                    <a href="{{ route('admins.orders.history') }}">
+                        <i class="ti-timer" aria-hidden="true"></i>
+                        <p>Lịch sử duyệt đơn</p>
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('admins.users.index') }}">
                         <i class="ti-user" aria-hidden="true"></i>
                         <p>Khách hàng</p>

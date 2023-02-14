@@ -27,4 +27,9 @@ class Admin extends Authenticatable
     {
         return ($this->gender == 0) ? 'Female' : 'Male';
     }
+
+    public function bills()
+    {
+        return $this->belongsToMany(Bill::class, 'order_confirm')->withPivot('status')->withTimestamps();
+    }
 }

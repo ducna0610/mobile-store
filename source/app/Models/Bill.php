@@ -28,4 +28,9 @@ class Bill extends Model
     {
         return $this->belongsToMany(Type::class, 'bill_detail')->withPivot('price', 'quantity')->withTimestamps();
     }
+
+    public function admins()
+    {
+        return $this->belongsToMany(Admin::class, 'order_confirm')->withPivot('status')->withTimestamps();
+    }
 }

@@ -21,7 +21,7 @@ class User extends Authenticatable
         'dob',
         'phone',
         'address',
-        'token',
+        'remember_token',
     ];
 
     protected function genderName(): Attribute

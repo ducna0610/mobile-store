@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="checkbox">
-                            <label><input type="checkbox"> Remember me</label>
+                            <label><input type="checkbox" name="remember"> Remember me</label>
                         </div>
                     </div>
                     <div class="modal-footer">
