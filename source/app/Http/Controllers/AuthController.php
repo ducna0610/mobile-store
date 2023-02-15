@@ -126,25 +126,14 @@ class AuthController extends Controller
         return redirect()->route('homes.index');
     }
 
-
     public function logging(LoginUserRequest $request)
     {
-        try {
-            $user = User::query()
-                ->where('email', $request->get('email'))
-                ->firstOrFail();
+        $remember = $request->has('remember') ? true : false;
 
-            if (!Hash::check($request->get('password'), $user->password)) {
-                throw new Exception('Invalid password');
-            }
-
-            Auth::login($user);
-
-            return redirect()->route('homes.index');
-        } catch (\Throwable $e) {
-            // throw $e;
-
-            return redirect()->route('homes.index')->with('error', 'Tài khoản hoặc mật khẩu không chính xác!');;
+        if (auth()->attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $remember)) {
+            return redirect()->route('homes.index')->with('success', 'Chào mừng bạn trở lại.');
+        } else {
+            return back()->with('error', 'your username and password are wrong.');
         }
     }
 
