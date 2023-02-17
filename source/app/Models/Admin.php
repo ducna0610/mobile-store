@@ -10,11 +10,15 @@ class Admin extends Authenticatable
 {
     use HasFactory;
 
-    public $timestamps = false;
+    // public $timestamps = false;
 
     // ===========================
     protected $fillable = [
+        'name',
         'email',
+        'gender',
+        'phone',
+        'address',
         'password',
     ];
 
@@ -25,7 +29,7 @@ class Admin extends Authenticatable
 
     public function getGenderNameAttribute()
     {
-        return ($this->gender == 0) ? 'Female' : 'Male';
+        return ($this->gender == 1) ? 'Nam' : 'Nữ';
     }
 
     public function bills()

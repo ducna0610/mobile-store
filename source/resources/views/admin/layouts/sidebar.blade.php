@@ -126,8 +126,14 @@
                 </li>
                 <li>
                     <a href="{{ route('admins.users.index') }}">
-                        <i class="ti-user" aria-hidden="true"></i>
+                        <i class="ti-heart" aria-hidden="true"></i>
                         <p>Khách hàng</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admins.employees.index') }}">
+                        <i class="ti-user" aria-hidden="true"></i>
+                        <p>Nhân viên</p>
                     </a>
                 </li>
             @endif

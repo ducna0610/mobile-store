@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('email');
             $table->text('password');
-            $table->boolean('gender')->nullable();
+            $table->boolean('gender')->default(1);
             $table->timestamp('dob')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('phone', 10)->nullable();
             $table->string('address')->nullable();

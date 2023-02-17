@@ -60,7 +60,6 @@ class OrderController extends Controller
         $arr_bill_id = DB::table('order_confirm')
             ->distinct('bill_id')
             ->pluck('bill_id');
-        // return $data;
 
         return view('admin.order.history', [
             'title' => 'Lịch sử duyệt đơn',

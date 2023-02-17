@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ChartController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\ManufacturerController;
 use App\Http\Controllers\Admin\OrderController;
@@ -265,6 +266,19 @@ Route::group(
                     ],
                     function () {
                         Route::get('/history', 'history')->name('history');
+                    }
+                );
+
+                Route::group(
+                    [
+                        'prefix' => 'employees',
+                        'as' => 'employees.',
+                        'controller' => EmployeeController::class,
+                    ],
+                    function () {
+                        Route::get('/', 'index')->name('index');
+                        Route::get('/create', 'create')->name('create');
+                        Route::post('/store', 'store')->name('store');
                     }
                 );
             }

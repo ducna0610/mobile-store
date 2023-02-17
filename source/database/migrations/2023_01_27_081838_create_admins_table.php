@@ -16,15 +16,14 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('name', 50);
             $table->string('email');
             $table->text('password');
-            $table->boolean('gender')->nullable();
-            $table->string('phone', 10)->nullable();
-            $table->string('address')->nullable();
+            $table->boolean('gender')->default(1);
+            $table->string('phone', 10);
+            $table->string('address');
             $table->timestamp('dob')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->tinyInteger('role')->default(AdminRoleEnum::ADMIN)->comment('AdminRoleEnum');
-            $table->string('avatar')->nullable();
             $table->string('remember_token')->nullable();
             $table->timestamps();
         });
