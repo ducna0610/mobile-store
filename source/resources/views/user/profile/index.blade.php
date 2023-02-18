@@ -4,22 +4,29 @@
     <div class="container">
         <div class="row profile">
             <div class="col-md-3 mb-3 summary">
-                <b>Thống kê</b>
+                <b>
+                    <a href="{{ route('bills.showBill') }}" style="text-decoration: none">Thống kê đơn hàng</a>
+                </b>
                 <br>
                 <div class="my-4 row">
                     <div class="col">
-                        <a href="{{ route('bills.showBill') }}" style="text-decoration: none">Số đơn hàng</a>:
-                        {{ $num_order }}
+                        Số đơn hàng chờ duyệt:
+                        {{ $num_order_spending }}
                     </div>
                 </div>
                 <div class="my-4 row">
                     <div class="col">
-                        Đơn chờ lấy: 40
+                        Đơn hàng đang giao: {{ $num_order_delivering }}
                     </div>
                 </div>
                 <div class="my-4 row">
                     <div class="col">
-                        Số đơn: 40
+                        Số đơn đã mua: {{ $num_order_done }}
+                    </div>
+                </div>
+                <div class="my-4 row">
+                    <div class="col">
+                        Số đơn đã hủy: {{ $num_order_cancel }}
                     </div>
                 </div>
             </div>
