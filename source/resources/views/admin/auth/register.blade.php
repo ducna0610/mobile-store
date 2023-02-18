@@ -11,62 +11,150 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
 
     <style>
-        /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Reem+Kufi+Fun:wght@500&family=Reem+Kufi:wght@400;500&display=swap'); */
-        @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
-        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;400&display=swap');
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* font-family: 'Reem Kufi Fun', sans-serif; */
-            font-family: 'Jost', sans-serif;
-
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-font-smoothing: antialiased;
+            -o-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        .section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #282c34;
+        body {
+            font-family: "Roboto", Helvetica, Arial, sans-serif;
+            font-weight: 100;
+            font-size: 12px;
+            line-height: 30px;
+            color: #777;
+            background: lightgray;
         }
 
-        .login {
-            width: 360px;
-            height: min-content;
-            padding: 20px;
-            border-radius: 8px;
-            /* background: green; */
+        .container {
+            max-width: 400px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .img {
-            width: 50px;
-            height: 50px;
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact input[type="tel"],
+        #contact input[type="url"],
+        #contact textarea,
+        #contact button[type="submit"] {
+            font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+        }
+
+        #contact {
+            background: #F9F9F9;
+            padding: 25px;
+            margin: 150px 0;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+
+        #contact h3 {
+            display: block;
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 10px;
+        }
+
+        #contact h4 {
+            margin: 5px 0 15px;
+            display: block;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        fieldset {
+            border: medium none !important;
+            margin: 0 0 10px;
+            min-width: 100%;
+            padding: 0;
+            width: 100%;
+        }
+
+        #contact input[type="text"],
+        #contact input[type="email"],
+        #contact input[type="tel"],
+        #contact input[type="url"],
+        #contact textarea {
+            width: 100%;
+            border: 1px solid #ccc;
+            background: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+        }
+
+        #contact input[type="text"]:hover,
+        #contact input[type="email"]:hover,
+        #contact input[type="tel"]:hover,
+        #contact input[type="url"]:hover,
+        #contact textarea:hover {
+            -webkit-transition: border-color 0.3s ease-in-out;
+            -moz-transition: border-color 0.3s ease-in-out;
+            transition: border-color 0.3s ease-in-out;
+            border: 1px solid #aaa;
+        }
+
+        #contact textarea {
+            height: 100px;
+            max-width: 100%;
+            resize: none;
+        }
+
+        #contact button[type="submit"] {
             cursor: pointer;
+            width: 100%;
+            border: none;
+            background: lightgray;
+            color: #FFF;
+            margin: 0 0 5px;
+            padding: 10px;
+            font-size: 15px;
         }
 
-        .img:hover {
-            color: rgb(0, 0, 255);
+        #contact button[type="submit"]:hover {
+            background: #43A047;
+            -webkit-transition: background 0.3s ease-in-out;
+            -moz-transition: background 0.3s ease-in-out;
+            transition: background-color 0.3s ease-in-out;
         }
 
-        .login h1 {
-            font-size: 36px;
-            margin-bottom: 25px;
+        #contact button[type="submit"]:active {
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
         }
 
-        .login form {
-            font-size: 20px;
-
+        .copyright {
+            text-align: center;
         }
 
-        .login form .form-group {
-            margin-bottom: 12px;
+        #contact input:focus,
+        #contact textarea:focus {
+            outline: 0;
+            border: 1px solid #aaa;
         }
 
-        .login form input[type="submit"] {
-            font-size: 20px;
-            margin-top: 15px;
+        ::-webkit-input-placeholder {
+            color: #888;
+        }
+
+        :-moz-placeholder {
+            color: #888;
+        }
+
+        ::-moz-placeholder {
+            color: #888;
+        }
+
+        :-ms-input-placeholder {
+            color: #888;
         }
     </style>
 
@@ -74,47 +162,85 @@
 </head>
 
 <body>
-    <div class="Login">
-        <div class="section">
-            <div class="login bg-white m-4">
-                <h1 class="text-center">
-                    Admin register
-                </h1>
-                <!-- <h1 class="text-center">Login Here!</h1> -->
+    <div class="container">
+        <form id="contact" action="admin-register" method="post">
+            @csrf
+            <h3>Admin Register</h3>
+            <fieldset>
+                <input placeholder="Tên" type="text" tabindex="1" required autofocus name="name"
+                    value="{{ old('name') }}">
 
-                <form action="admin-register" method="post">
-                    @csrf
-                    <div class="form-group">
-                        <label class="form-label" type="email">
-                            Email Address
-                        </label>
-                        <input class="form-control" type="email" id="email" name="email" required />
-                        <!-- <div class="invalid-feedback">
-                  Please enter your email address
-              </div>  -->
-                    </div>
+                @error('name')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                <input placeholder="Địa chỉ mail" type="email" tabindex="2" required name="email"
+                    value="{{ old('email') }}">
 
-                    <div class="form-group">
-                        <label class="form-label" type="password">
-                            Password
-                        </label>
-                        <input class="form-control" type="password" id="password" name="password" required />
-                        <!-- <div class="invalid-feedback">
-                  Please enter your password
-              </div> -->
-                    </div>
+                @error('email')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                Giới tính:
+                <br>
+                <input type="radio" name="gender" value="1" checked> Nam
+                <input type="radio" name="gender" value="0"> Nữ
 
-                    <div class="form-group form-check">
-                        <input class="form-check-input" type="checkbox" id="checkbox" />
-                        <label class="form-check-label" type="checkbox">
-                            Remember me
-                        </label>
-                    </div>
 
-                    <input class="btn btn-primary w-100" type="submit" value="Sign In" />
-                </form>
-            </div>
-        </div>
+                @error('gender')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                Ngày sinh:
+                <input type="date" tabindex="4" required style="margin-left: 40px" name="dob">
+
+                @error('dob')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                <input placeholder="Số điện thoại" type="tel" tabindex="5" required
+                    name="phone"value="{{ old('phone') }}">
+
+                @error('phone')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                <textarea placeholder="Địa chỉ" tabindex="4" required name="address">{{ old('address') }}</textarea>
+
+                @error('address')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                <input placeholder="Mật khẩu" type="text" tabindex="6" required name="password">
+
+                @error('password')
+                    <span style='color: red;'>
+                        {{ $message }}
+                    </span>
+                @enderror
+            </fieldset>
+            <fieldset>
+                <button type="submit" id="contact-submit" data-submit="...Sending">Đăng ký</button>
+            </fieldset>
+        </form>
     </div>
 </body>
 

@@ -45,11 +45,11 @@ class StoreEmployeeRequest extends FormRequest
                 'before:tomorrow'
             ],
             'phone' => [
-                'nullable',
+                'required',
                 'regex:/^0\d{9}$/',
             ],
             'address' => [
-                'nullable',
+                'required',
                 'max:255',
             ],
             'password' => [

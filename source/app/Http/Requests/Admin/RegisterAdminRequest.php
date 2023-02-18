@@ -25,19 +25,64 @@ class RegisterAdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => [
+            'name' => [
                 'required',
-                'string',
-                // 'email',
-                // 'min:3',
-                // 'max:255',
+                'min:2',
+                'max:50'
+            ],
+            'email' => [
+                'email',
+                'required',
+                'max:255',
+                'unique:admins',
+            ],
+            'gender' => [
+                'required',
+                'boolean',
+            ],
+            'dob' => [
+                'required',
+                'date_format:"Y-m-d"',
+                'before:tomorrow'
+            ],
+            'phone' => [
+                'required',
+                'regex:/^0\d{9}$/',
+            ],
+            'address' => [
+                'required',
+                'max:255',
             ],
             'password' => [
                 'required',
-                'string',
-                'min:1',
-                'max:255',
-            ]
+            ],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => ':attribute bắt buộc điền',
+            'unique' => ':attribute đã có tài khoản',
+            'min' => ':attribute cần ít nhât :min kí tự',
+            'max' => ':attribute chứa tối đa :max kí tự',
+            'email' => ':attribute không hợp lệ',
+            'regex' => ':attribute không hợp lệ',
+            'date_format' => ':attribute không hợp lệ',
+            'before' => 'Xin lỗi hệ thống chưa hỗ trợ người đến từ tương lai!'
+        ];
+    }
+
+    public function attributes()
+    {
+        return  [
+            'name' => 'Tên người dùng',
+            'email' => 'Email',
+            'gender' => 'Giới tính',
+            'dob' => 'Ngày sinh',
+            'phone' => 'Số điện thoại',
+            'address' => 'Địa chỉ',
+            'password' => 'Mật khẩu',
         ];
     }
 }
