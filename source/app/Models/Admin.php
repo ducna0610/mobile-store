@@ -18,6 +18,7 @@ class Admin extends Authenticatable
         'email',
         'gender',
         'phone',
+        'dob',
         'address',
         'password',
     ];

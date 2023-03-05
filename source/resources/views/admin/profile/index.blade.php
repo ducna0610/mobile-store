@@ -41,39 +41,57 @@
                             <br>
                             Họ tên:
                             <b>
-                                <input type="text" name="name" value="{{ $user->name }}">
+                                {{ $user->name }}
                             </b>
                             <br>
                             <br>
                             Giới tính:
                             <b>
-                                {{ $user->gender }}
+                                {{ $user->gender_name }}
                             </b>
                             <br>
                             <br>
                             Email:
                             <b>
-                                <input type="text" name="email" value="{{ $user->email }}">
+                                {{ $user->email }}
                             </b>
+                            <br>
+                            <br>
+                            Ngày sinh:
+                            <b>
+                                <input type="date" name="dob" value="{{ $user->dob }}">
+                            </b>
+                            @error('dob')
+                                <span style='color: red;'>
+                                    {{ $message }}
+                                </span>
+                            @enderror
                             <br>
                             <br>
                             Số điện thoại:
                             <b>
                                 <input type="text" name="phone" value="{{ $user->phone }}">
                             </b>
-                            <br>
+                            @error('phone')
+                                <span style='color: red;'>
+                                    {{ $message }}
+                                </span>
+                            @enderror
                             <br>
                             Địa chỉ:
                             <b>
                                 <input type="text" name="address" value="{{ $user->address }}">
                             </b>
+                            @error('address')
+                                <span style='color: red;'>
+                                    {{ $message }}
+                                </span>
+                            @enderror
                             <button class="btn btn-info btn-fill btn-wd" style="margin: 40px">
                                 Chỉnh sửa
                             </button>
                         </form>
                     </div>
-                </div>
-                <div class="card-content table-responsive table-full-width">
                 </div>
             </div>
         </div>

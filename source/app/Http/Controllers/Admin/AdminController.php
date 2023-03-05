@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\StatusOrderEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EditProfileAdminRequest;
 use App\Models\Admin;
 use App\Models\Bill;
 use App\Models\User;
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use DB;
 
@@ -55,8 +57,8 @@ class AdminController extends Controller
     public function showProfile()
     {
         $user = Auth::guard('admin')->user();
-        // return $user;
-        // $user['dob'] = date_format(DateTime::createFromFormat('Y-m-d H:i:s', $user->dob), 'd-m-Y');
+
+        $user['dob'] = date_format(DateTime::createFromFormat('Y-m-d H:i:s', $user->dob), 'Y-m-d');
 
         return view('admin.profile.index', [
             'user' => $user,
@@ -64,17 +66,17 @@ class AdminController extends Controller
         ]);
     }
 
-    public function editProfile()
-    // public function editProfile(EditProfileRequest $request)
+    public function editProfile(EditProfileAdminRequest $request)
     {
-        dd(request()->all());
         $data = $request->validated();
 
         $dob = (new DateTime($request->dob));
         $data['dob'] = $dob;
 
-        $user = auth()->user();
+        $user = Auth::guard('admin')->user();
+
         $user->fill($data);
+        
         $user->save();
 
         return back()->with('success', 'Cập nhật thành công!');

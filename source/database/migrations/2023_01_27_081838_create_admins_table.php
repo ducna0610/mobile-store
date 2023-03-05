@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('gender')->default(1);
             $table->string('phone', 10);
             $table->string('address');
-            $table->timestamp('dob')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('dob');
             $table->tinyInteger('role')->default(AdminRoleEnum::ADMIN)->comment('AdminRoleEnum');
             $table->string('remember_token')->nullable();
             $table->timestamps();

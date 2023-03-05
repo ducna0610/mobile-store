@@ -9,7 +9,6 @@ use App\Http\Requests\User\LoginUserRequest;
 use App\Http\Requests\User\RegisterUserRequest;
 use App\Models\Admin;
 use App\Models\User;
-use DateTime;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,10 +31,12 @@ class AuthController extends Controller
     public function adminRegistering(RegisterAdminRequest $request)
     {
         $data = $request->validated();
+        $dob = $request->date('dob');
 
         $password = Hash::make(request()->password);
 
         $data['password'] = $password;
+        $data['dob'] = $dob;
 
         $admin = new Admin();
         $admin->fill($data);
