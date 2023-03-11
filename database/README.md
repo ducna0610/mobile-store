@@ -7,7 +7,7 @@ web bán điện thoại
 ### Database diagram
 ![ERD](./DB.png)
 
-File tạo database: [Create database](./insert.sql)
+File tạo database: [Create database](./insert_db.sql)
 
 ---
 <div align="center">

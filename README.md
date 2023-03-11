@@ -7,21 +7,6 @@ web bán điện thoại
 | [Document](./document) | [Database](./database) | [Sourse code](./source) |
 
 
-### Intro
-##### User
-![intro-mobile-store](./intro-mobile-store.png)
-
-![detail-product](./detail-product.png)
-
-##### Admin
-![admin](./admin.png)
-
-![product](./product.png)
-
-![chart](./chart.png)
-
-![chart-detail](./chart-detail.png)
-
 ### Tính năng
 ##### User
 - Đăng nhập, đăng ký
@@ -34,6 +19,21 @@ web bán điện thoại
 - Tạo nhà sản xuất, sản phẩm, cấu hình
 - Xử lý đơn hàng
 - Xem thống kê
+
+### User
+![intro-mobile-store](./intro-mobile-store.png)
+
+![detail-product](./detail-product.png)
+
+### Admin
+![admin](./admin.png)
+
+![product](./product.png)
+
+![chart](./chart.png)
+
+![chart-detail](./chart-detail.png)
+
 
 ---
 <div align="center">
