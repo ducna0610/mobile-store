@@ -54,6 +54,7 @@ class ProductController extends Controller
 
         $data = $this->model
             ->latest()
+            ->withSum('types', 'quantity')
             ->with('manufacturer:id,name');
 
         if (request()->has('keywords')) {

@@ -96,7 +96,7 @@
                                                 data-id={{ $item->id }}
                                                 @if ($item->active) checked @endif>
                                         </td>
-                                        <td width="15%">100</td>
+                                        <td width="15%">{{ $item->types_sum_quantity }}</td>
                                         <td width="1%" class="td-actions text-center col-xs-3">
                                             <a href="{{ route('admins.products.detail', $item->id) }}" rel="tooltip"
                                                 title="Chi tiết" class="btn-lg col-md-4 col-xs-12">
